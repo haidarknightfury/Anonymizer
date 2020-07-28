@@ -1,0 +1,2 @@
+SCHEMA,TABLE_NAME,COLUMN_NAME,TYPE,ID_NAME
+public,name_test_table,name,NAME,id
