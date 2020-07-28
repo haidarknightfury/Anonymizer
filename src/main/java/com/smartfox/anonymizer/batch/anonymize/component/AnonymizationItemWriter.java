@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemWriter;
@@ -14,9 +16,6 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
-
-import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 
 /**
  * Anonymization Item Writer - To write the modified items to the database -

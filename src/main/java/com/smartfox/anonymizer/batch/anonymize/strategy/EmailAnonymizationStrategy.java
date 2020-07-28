@@ -3,40 +3,45 @@ package com.smartfox.anonymizer.batch.anonymize.strategy;
 import java.util.List;
 import java.util.function.Function;
 
-import com.smartfox.anonymizer.batch.anonymize.strategy.base.BaseStrategy;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
+import com.smartfox.anonymizer.batch.anonymize.strategy.base.AnonymisationAsyncManager;
 
 /**
  * Email Anonymization Strategy
- *
+ * 
  * @author hdargaye
  *
  */
 @Component
-public class EmailAnonymizationStrategy extends BaseStrategy {
+public class EmailAnonymizationStrategy implements Converter<List<SourceValue>, List<SourceValue>> {
 
-    @Override
-    public List<SourceValue> convert(List<SourceValue> source) {
+	@Autowired
+	AnonymisationAsyncManager anonymisationAsyncMgr;
 
-        Function<SourceValue, Object> anonEmail = num ->
-            {
+	@Override
+	public List<SourceValue> convert(List<SourceValue> source) {
 
-                String val = " ";
-                String sourceval = (String) num.getValue();
+		Function<SourceValue, Object> anonEmail = num -> {
 
-                if (sourceval != null) {
-                    val = "oui@dso-capital.com";
+			String val = " ";
+			String sourceval = (String)num.getValue();
+			
+			if (sourceval!= null) {
+				val = "oui@dso-capital.com";
 
-                } else {
-                    val = "non@dso-capital.com";
-                }
+			} else {
+				val = "non@dso-capital.com";
+			}
 
-                return val;
-            };
+			return val;
+		};
 
-        return this.anonymisationAsyncMgr.executeAsync(source, anonEmail);
-    }
+		return this.anonymisationAsyncMgr.executeAsync(source, anonEmail);
+	}
+
 
 }

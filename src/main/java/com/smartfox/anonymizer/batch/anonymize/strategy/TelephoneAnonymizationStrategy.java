@@ -3,39 +3,44 @@ package com.smartfox.anonymizer.batch.anonymize.strategy;
 import java.util.List;
 import java.util.function.Function;
 
-import com.smartfox.anonymizer.batch.anonymize.strategy.base.BaseStrategy;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
+import com.smartfox.anonymizer.batch.anonymize.strategy.base.AnonymisationAsyncManager;
 
 @Component
-public class TelephoneAnonymizationStrategy extends BaseStrategy {
+public class TelephoneAnonymizationStrategy implements Converter<List<SourceValue>, List<SourceValue>> {
 
-    @Override
-    public List<SourceValue> convert(List<SourceValue> source) {
+	@Autowired
+	private AnonymisationAsyncManager anonymisationAsyncMgr;
 
-        // Function return val based on sourceval if null or not
-        Function<SourceValue, Object> anonTelNum = num ->
-            {
+	@Override
+	public List<SourceValue> convert(List<SourceValue> source) {
 
-                String sourceval = (String) num.getValue();
-                String val = " ";
+		// Function return val based on sourceval if null or not
+		Function<SourceValue, Object> anonTelNum = num -> {
 
-                if (sourceval != null) {
-                    val = "1111111111";
+			String sourceval = (String)num.getValue();
+			String val = " ";
+	
 
-                } else {
-                    val = "0000000000";
-                }
+			if (sourceval != null) {
+				val = "1111111111";
 
-                return val;
-            };
+			} else {
+				val = "0000000000";
+			}
 
-        // the source(true val), telephoneRepository(dummy type)
-        // return this.anonymisationAsyncMgr.<Telephone>executeAsync(source,
-        // this.telephoneRepository, Telephone::getPhone);
+			return val;
+		};
 
-        return this.anonymisationAsyncMgr.executeAsync(source, anonTelNum);
-    }
+		// the source(true val), telephoneRepository(dummy type)
+		// return this.anonymisationAsyncMgr.<Telephone>executeAsync(source,
+		// this.telephoneRepository, Telephone::getPhone);
+
+		return this.anonymisationAsyncMgr.executeAsync(source, anonTelNum);
+	}
 
 }

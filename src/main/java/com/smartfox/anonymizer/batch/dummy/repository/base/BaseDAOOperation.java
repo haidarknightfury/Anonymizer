@@ -1,4 +1,4 @@
-package com.smartfox.anonymizer.batch.common;
+package com.smartfox.anonymizer.batch.dummy.repository.base;
 
 import java.util.List;
 

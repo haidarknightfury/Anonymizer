@@ -2,10 +2,6 @@ package com.smartfox.anonymizer.batch.anonymize.config;
 
 import java.util.List;
 
-import com.smartfox.anonymizer.batch.anonymize.component.AnonymizationCompletionListener;
-import com.smartfox.anonymizer.batch.anonymize.component.AnonymizationItemWriter;
-import com.smartfox.anonymizer.batch.anonymize.component.SourceItemProcessor;
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -23,7 +19,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.util.Pair;
 
+import com.smartfox.anonymizer.batch.anonymize.component.AnonymizationCompletionListener;
+import com.smartfox.anonymizer.batch.anonymize.component.AnonymizationItemWriter;
+import com.smartfox.anonymizer.batch.anonymize.component.SourceItemProcessor;
 import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import com.github.javafaker.Faker;
 
 /**

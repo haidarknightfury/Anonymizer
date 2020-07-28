@@ -9,14 +9,14 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
-import com.smartfox.anonymizer.batch.common.BaseDAOOperation;
+import com.smartfox.anonymizer.batch.dummy.repository.base.BaseDAOOperation;
 
 /**
  * Async Manager class - responsible for managing partition Right now only value

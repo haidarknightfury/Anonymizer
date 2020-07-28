@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import com.smartfox.anonymizer.batch.anonymize.strategy.base.AnonymizationStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 
 /**
  *

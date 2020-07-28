@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceType;
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.smartfox.anonymizer.batch.anonymize.model.SourceItem;
-import com.smartfox.anonymizer.batch.anonymize.model.SourceType;
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import com.smartfox.anonymizer.batch.anonymize.strategy.AddressAnonymizationStrategy;
 import com.smartfox.anonymizer.batch.anonymize.strategy.CityAnonymizationStrategy;
 import com.smartfox.anonymizer.batch.anonymize.strategy.CommentAnonymizationStrategy;
@@ -28,12 +28,13 @@ import com.smartfox.anonymizer.batch.anonymize.strategy.TelephoneAnonymizationSt
 /**
  * Anonymization Strategy class - Selects the algorithm based on the type of
  * data
- *
+ * 
  * @author hdargaye
  *
  */
 @Component
 public class AnonymizationStrategy implements InitializingBean {
+
 
     private Map<SourceType, Converter<List<SourceValue>, List<SourceValue>>> convertorMap = new HashMap<SourceType, Converter<List<SourceValue>, List<SourceValue>>>();
 
@@ -63,13 +64,13 @@ public class AnonymizationStrategy implements InitializingBean {
 
     @Autowired
     private DobAnonymizationStrategy dobAnonymization;
-
+    
     @Autowired
     private EraseFieldAnonymizationStrategy eraseFieldAnonymization;
-
+    
     @Autowired
     private DeptDobAnonymizationStrategy deptDobAnonymization;
-
+    
     @Autowired
     private CityAnonymizationStrategy cityAnonymization;
 
@@ -96,5 +97,6 @@ public class AnonymizationStrategy implements InitializingBean {
         }
         return this.convertorMap.get(sourceItem.getSourceType()).convert(original);
     }
+
 
 }

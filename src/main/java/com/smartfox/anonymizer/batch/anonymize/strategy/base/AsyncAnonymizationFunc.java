@@ -7,10 +7,9 @@ import java.util.Spliterator;
 import java.util.concurrent.Callable;
 import java.util.function.Function;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 
 /**
  * Anonymisation - return specific string  if value null or not

@@ -6,10 +6,9 @@ import java.util.Spliterator;
 import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 
+import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.smartfox.anonymizer.batch.anonymize.model.SourceValue;
 
 /**
  * Anonymisation - Without using fake repository Takes a supplier as input
